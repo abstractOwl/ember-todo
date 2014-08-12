@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ember.js Todo App</title>
+  <link type="text/css" rel="stylesheet"
+    href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link type="text/css" rel="stylesheet"
+    href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+</head>
+<body>
+  <div class="container" id="todo-app">
+  </div>
+
+  <!-- Dependencies -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="bower_components/ember/ember.min.js"></script>
+
+  <!-- Templates -->
+  <script type="text/x-handlebars">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>My Todos</h1>
+
+        <hr>
+
+        {{outlet}}
+      </div>
+    </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="index">
+    <button {{action 'newTask'}}>New Task</button>
+
+    <hr>
+
+    <ul>
+      {{#each}}
+      <li>{{#link-to 'task' this}}{{name}}{{/link-to}}</li>
+      {{else}}
+      <li>No tasks yet!</li>
+      {{/each}}
+    </ul>
+  </script>
+  <script type="text/x-handlebars" data-template-name="task">
+    {{#link-to 'index'}}&larr; Back{{/link-to}}
+
+    <table class="table">
+      <tr>
+        <td>Task</td>
+        <td>{{name}}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{desc}}</td>
+      </tr>
+    </table>
+  </script>
+  <script type="text/x-handlebars" data-template-name="newTask">
+    <h2>Create New Task</h2>
+    {{#link-to 'index'}}&larr; Back{{/link-to}}
+
+    <div class="form-group">
+      <label for="name">Task</label>
+      {{input id="task-name" class="form-control" value=name
+        placeholder="Task Name"}}
+    </div>
+    <div class="form-group">
+      <label for="desc">Description</label>
+      {{textarea id="task-desc" class="form-control" value=desc
+        placeholder="What do you want to do?"}}
+    </div>
+    <button {{action 'createTask'}}>Create</button>
+  </script>
+
+  <!-- app.js -->
+  <script src="js/app.js"></script>
+</body>
+</html>
