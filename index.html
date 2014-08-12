@@ -34,13 +34,19 @@
 
     <hr>
 
-    <ul>
+    <table class="table table-striped">
+      <tbody>
       {{#each}}
-      <li>{{#link-to 'task' this}}{{name}}{{/link-to}}</li>
+        <tr>
+          <td>{{#link-to 'task' this}}{{name}}{{/link-to}}</td>
+        </tr>
       {{else}}
-      <li>No tasks yet!</li>
+        <tr>
+          <td>No tasks yet!</td>
+        </tr>
       {{/each}}
-    </ul>
+      </tbody>
+    </table>
   </script>
   <script type="text/x-handlebars" data-template-name="task">
     {{outlet}}
@@ -49,6 +55,8 @@
     <button class="btn btn-default" {{action 'goBack'}}>&larr; Back</button>
     <button class="btn btn-default" {{action 'editTask'}}>Edit</button>
     <button class="btn btn-default" {{action 'deleteTask'}}>Delete</button>
+
+    <hr>
 
     <table class="table">
       <tr>
@@ -65,6 +73,8 @@
     <button class="btn btn-default" {{action 'goBack'}}>&larr; Back</button>
     <button class="btn btn-default" {{action 'editTask'}} disabled>Edit</button>
     <button class="btn btn-default" {{action 'deleteTask'}}>Delete</button>
+
+    <hr>
 
     <h2>Edit Task</h2>
 
