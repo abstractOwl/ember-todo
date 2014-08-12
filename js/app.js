@@ -60,9 +60,15 @@ app.NewTaskController = Ember.ArrayController.extend({
     createTask: function () {
       // TODO validation
       Tasks.create(this.get('name'), this.get('desc'));
-      Ember.$('#task-name, #task-desc').val('');
+      this.set('name', '');
+      this.set('desc', '');
       this.transitionToRoute('index');
     }
+  }
+});
+app.NewTaskRouter = Ember.ArrayController.extend({
+  model: function () {
+    return {};
   }
 });
 
@@ -96,6 +102,8 @@ app.TaskEditController = app.TaskController.extend({
       Tasks.update(this.get('model').id, this.get('newName'), this.get('newDesc'));
       this.set('name', this.get('newName'));
       this.set('desc', this.get('newDesc'));
+      this.set('newName', '');
+      this.set('newDesc', '');
       this.transitionToRoute('task', this.get('model'));
     }
   },
