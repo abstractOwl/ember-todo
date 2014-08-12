@@ -70,12 +70,12 @@
 
     <div class="form-group">
       <label for="name">Task</label>
-      {{input id="task-name" class="form-control" value=newName
+      {{input id="task-edit-name" class="form-control" value=newName
         placeholder="Task Name"}}
     </div>
     <div class="form-group">
       <label for="desc">Description</label>
-      {{textarea id="task-desc" class="form-control" value=newDesc
+      {{textarea id="task-edit-desc" class="form-control" value=newDesc
         placeholder="What do you want to do?"}}
     </div>
     <button class="btn btn-default" {{action 'updateTask'}}>Update</button>
@@ -87,12 +87,12 @@
 
     <div class="form-group">
       <label for="name">Task</label>
-      {{input id="task-name" class="form-control" value=name
+      {{input id="task-new-name" class="form-control" value=name
         placeholder="Task Name"}}
     </div>
     <div class="form-group">
       <label for="desc">Description</label>
-      {{textarea id="task-desc" class="form-control" value=desc
+      {{textarea id="task-new-desc" class="form-control" value=desc
         placeholder="What do you want to do?"}}
     </div>
     <button class="btn btn-default" {{action 'createTask'}}>Create</button>
