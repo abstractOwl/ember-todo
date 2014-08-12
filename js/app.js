@@ -16,7 +16,6 @@ var Tasks = app.Tasks = {
     window.localStorage.setItem('tasks', JSON.stringify(this.items));
   },
   find: function (id) {
-    console.log('find ' + id + ": " + JSON.stringify(this.items[id]));
     return this.items[id];
   },
   create: function (name, desc) {
@@ -27,7 +26,6 @@ var Tasks = app.Tasks = {
   },
   update: function (id, name, desc) {
     this.items[id] = { name: name, desc: desc, id: id };
-    console.log('update ' + id + ": " + JSON.stringify(this.items[id]));
     window.localStorage.setItem('tasks', JSON.stringify(this.items));
   }
 };
@@ -63,12 +61,10 @@ app.NewTaskController = Ember.ArrayController.extend({
       this.set('name', '');
       this.set('desc', '');
       this.transitionToRoute('index');
+    },
+    goBack: function () {
+      this.transitionToRoute('index');
     }
-  }
-});
-app.NewTaskRouter = Ember.ArrayController.extend({
-  model: function () {
-    return {};
   }
 });
 
