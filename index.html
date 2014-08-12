@@ -30,7 +30,7 @@
     </div>
   </script>
   <script type="text/x-handlebars" data-template-name="index">
-    <button {{action 'newTask'}}>New Task</button>
+    <button class="btn btn-default" {{action 'newTask'}}>New Task</button>
 
     <hr>
 
@@ -43,7 +43,12 @@
     </ul>
   </script>
   <script type="text/x-handlebars" data-template-name="task">
-    {{#link-to 'index'}}&larr; Back{{/link-to}}
+    {{outlet}}
+  </script>
+  <script type="text/x-handlebars" data-template-name="task/index">
+    <button class="btn btn-default" {{action 'goBack'}}>&larr; Back</button>
+    <button class="btn btn-default" {{action 'editTask'}}>Edit</button>
+    <button class="btn btn-default" {{action 'deleteTask'}}>Delete</button>
 
     <table class="table">
       <tr>
@@ -56,6 +61,26 @@
       </tr>
     </table>
   </script>
+  <script type="text/x-handlebars" data-template-name="task/edit">
+    <button class="btn btn-default" {{action 'goBack'}}>&larr; Back</button>
+    <button class="btn btn-default" {{action 'editTask'}} disabled>Edit</button>
+    <button class="btn btn-default" {{action 'deleteTask'}}>Delete</button>
+
+    <h2>Edit Task</h2>
+
+    <div class="form-group">
+      <label for="name">Task</label>
+      {{input id="task-name" class="form-control" value=newName
+        placeholder="Task Name"}}
+    </div>
+    <div class="form-group">
+      <label for="desc">Description</label>
+      {{textarea id="task-desc" class="form-control" value=newDesc
+        placeholder="What do you want to do?"}}
+    </div>
+    <button class="btn btn-default" {{action 'updateTask'}}>Update</button>
+  </script>
+
   <script type="text/x-handlebars" data-template-name="newTask">
     <h2>Create New Task</h2>
     {{#link-to 'index'}}&larr; Back{{/link-to}}
@@ -70,7 +95,7 @@
       {{textarea id="task-desc" class="form-control" value=desc
         placeholder="What do you want to do?"}}
     </div>
-    <button {{action 'createTask'}}>Create</button>
+    <button class="btn btn-default" {{action 'createTask'}}>Create</button>
   </script>
 
   <!-- app.js -->
