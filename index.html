@@ -82,8 +82,9 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="newTask">
+    <button class="btn btn-default" {{action 'goBack'}}>&larr; Back</button>
+
     <h2>Create New Task</h2>
-    {{#link-to 'index'}}&larr; Back{{/link-to}}
 
     <div class="form-group">
       <label for="name">Task</label>
